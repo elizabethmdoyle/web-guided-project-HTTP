@@ -11,12 +11,20 @@ export const getTodos = () => {
                 .catch(err => {console.log(err)})
 }
 
-export const addTodos = (description) => {
+export const postTodo = (description) => {
     const todo = {
         description: description,
         isDone: false
     }
 
-    return axios.AxiosHeaders
+    return axios.post(todoURL, todo);
     
 }
+
+export const putTodo = todo => {
+    return axios.put(todoURL + '/' + todo.id, todo)
+  }
+  
+  export const deleteTodo = id => {
+    return axios.delete(todoURL + '/' + id)
+  }
